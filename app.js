@@ -20,28 +20,28 @@ const order = require("./routes/orderRoute")
 
 //routing setup
 app.use("/api/auth", userRouter);
-app.use("/api/user", addressRouter);
-app.use("/api", stripe);
-app.use("/api/user", order);
+app.use("/api/user", auth, addressRouter);
+app.use("/api", auth, stripe);
+app.use("/api/user", auth, order);
 
 app.get("/", (req, res) => {
-  res.send("Hello World!");
+    res.send("Hello World!");
 });
 
 app.get("/welcome", auth, (req, res) => {
-  res.status(200).send("Welcome to FreeCodeCamp 🙌");
+    res.status(200).send("Welcome to FreeCodeCamp 🙌");
 });
 
 // This should be the last route else any after it won't work
 app.use("*", (req, res) => {
-  res.status(404).json({
-    success: "false",
-    message: "Page not found",
-    error: {
-      statusCode: 404,
-      message: "You reached a route that is not defined on this server",
-    },
-  });
+    res.status(404).json({
+        success: "false",
+        message: "Page not found",
+        error: {
+            statusCode: 404,
+            message: "You reached a route that is not defined on this server",
+        },
+    });
 });
 
 module.exports = app;
