@@ -76,8 +76,8 @@ exports.login = async (req, res, next) => {
     }
     // Validate if user exist in our database
     const user = await User.findOne({ email });
-    const order = await Order.findOne({ user: user._id })
-    const address = await Address.findOne({ user: user._id })
+    const order = await Order.find({ user: user._id })
+    const address = await Address.find({ user: user._id })
 
 console.log({order})
 console.log({address})
