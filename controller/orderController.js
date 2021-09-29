@@ -18,7 +18,8 @@ exports.placeOrder = async(req, res, next) => {
     } catch (err) {
         res.status(500).send({
             status: "failed",
-            message: "Could not Placed order."
+            message: "Could not Placed order.",
+            error: err
         });
         console.log(err)
     }
