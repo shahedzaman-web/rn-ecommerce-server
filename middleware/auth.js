@@ -8,7 +8,7 @@ const User = require("./../model/user");
 const verifyToken = async(req, res, next) => {
   let token 
   
-  if(req.headers.authorization || req.headers.authorization.startswith("Bearer")){
+  if(req.headers.authorization){
     token=req.headers.authorization.split(" ")[1];
   }
     // req.body.token || req.query.token || req.headers["x-access-token"] || req.header("Authorization").replace("Bearer", '');

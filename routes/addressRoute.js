@@ -5,7 +5,11 @@ const router = express.Router();
 const {
   createAddress,
   deleteAddress,
+  getAddress
 } = require("./../controller/addressController");
+
+// Get addressRoute=>get
+router.route("/all-address").get(getAddress);
 
 // Create a new addressRoute =>post
 router.route("/create-address").post(createAddress);

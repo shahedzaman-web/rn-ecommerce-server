@@ -1,6 +1,5 @@
 const User = require("./../model/user");
-const Order = require("./../model/order.model")
-const Address = require("./../model/address.model")
+
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
@@ -76,11 +75,8 @@ exports.login = async (req, res, next) => {
     }
     // Validate if user exist in our database
     const user = await User.findOne({ email });
-    const order = await Order.find({ user: user._id })
-    const address = await Address.find({ user: user._id })
 
-console.log({order})
-console.log({address})
+
 
     if (user && (await bcrypt.compare(password, user.password))) {
       // Create token
@@ -96,7 +92,7 @@ console.log({address})
       user.token = token;
 
       // user
-      return res.status(200).json({ message: "success", token: token,order: order,address: address });
+      return res.status(200).json({ message: "success", token: token });
     }
     return res.status(400).send("Invalid Credentials");
   } catch (err) {
