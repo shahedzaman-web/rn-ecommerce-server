@@ -5,7 +5,7 @@ const router = express.Router();
 const { placeOrder,getOrder } = require("./../controller/orderController");
 
 //get orderRoute=>get
-router.route("/all-order").get(getOrder);
+router.route("/all-order/:id").get(getOrder);
 
 // Create a new orderRoute =>post
 router.route("/place-order").post(placeOrder);

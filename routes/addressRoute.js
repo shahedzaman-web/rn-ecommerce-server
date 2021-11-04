@@ -9,7 +9,7 @@ const {
 } = require("./../controller/addressController");
 
 // Get addressRoute=>get
-router.route("/all-address").get(getAddress);
+router.route("/all-address/:id").get(getAddress);
 
 // Create a new addressRoute =>post
 router.route("/create-address").post(createAddress);

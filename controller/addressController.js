@@ -31,8 +31,9 @@ exports.createAddress = async (req, res, next) => {
 
 // getAddress
 exports.getAddress = async (req, res, next) => {
+  const id =req.params.id
   try {
-    const address = await Address.find({});
+    const address = await Address.find({user : id});
 
     res.status(200).send({
       status: "success",

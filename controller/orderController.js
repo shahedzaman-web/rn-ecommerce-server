@@ -34,8 +34,12 @@ exports.placeOrder = async (req, res, next) => {
 };
 
 exports.getOrder = async (req, res, next) => {
+    const id = req.params.id
+    console.log({id})
+
   try {
-    const order = await Order.find({});
+    const order = await Order.find({user:id});
+    console.log({order})
     res.status(200).send({
       status: "success",
       payload: order,
