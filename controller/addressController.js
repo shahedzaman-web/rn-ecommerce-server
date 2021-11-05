@@ -31,10 +31,18 @@ exports.createAddress = async (req, res, next) => {
 
 // getAddress
 exports.getAddress = async (req, res, next) => {
-  const id =req.params.id
-  try {
-    const address = await Address.find({user : id});
 
+  const id =req.params.id
+  console.log({id})
+  try {
+    const address = await Address.findById(id);
+   
+    if (!address) {
+      res.status(404).send({
+        status: "failed",
+        message: "Address not found.",
+      });
+    }
     res.status(200).send({
       status: "success",
       payload: address,

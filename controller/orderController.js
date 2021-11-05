@@ -34,16 +34,21 @@ exports.placeOrder = async (req, res, next) => {
 };
 
 exports.getOrder = async (req, res, next) => {
-    const id = req.params.id
-    console.log({id})
+  const id = req.params.id;
+  console.log({ id });
 
   try {
-    const order = await Order.find({user:id});
-    console.log({order})
-    res.status(200).send({
-      status: "success",
-      payload: order,
-    });
+    const order = await Order.findById(id);
+    console.log({ order });
+    if (!order) {
+      res.status(404).send({
+        status: "failed",
+        message: "Order not found",
+      });
+    }
+    res
+      .status(200)
+      .send({ status: "success", message: "Successfully get order!", order });
   } catch (err) {
     res.status(500).send({
       status: "failed",
