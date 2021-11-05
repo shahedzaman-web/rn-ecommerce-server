@@ -44,18 +44,6 @@ app.use("*", (req, res) => {
     });
 });
 
-// const accountSid = 'AC580764dafd5acc7f81334ed5bd34e287'; // Your Account SID from www.twilio.com/console
-// const authToken = '38cfafeb5f448c8c15fa8c980c8fb006'; // Your Auth Token from www.twilio.com/console
 
-// const twilio = require('twilio');
-// const client = new twilio(accountSid, authToken);
-
-// client.messages
-//   .create({
-//     body: 'Hello from Node',
-//     to: '+8801786233560', // Text this number
-//     from: '+12345678901', // From a valid Twilio number
-//   })
-//   .then((message) => console.log(message.sid));
 
 module.exports = app;
