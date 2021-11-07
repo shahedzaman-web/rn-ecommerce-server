@@ -35,7 +35,7 @@ exports.getAddress = async (req, res, next) => {
   const id =req.params.id
   console.log({id})
   try {
-    const address = await Address.findById(id);
+    const address = await Address.find({user : id});
    
     if (!address) {
       res.status(404).send({
@@ -49,6 +49,7 @@ exports.getAddress = async (req, res, next) => {
     });
   } catch (err) {
     res.status(500).send({
+      error: err,
       status: "failed",
       message: "Could not find Address!",
     });
