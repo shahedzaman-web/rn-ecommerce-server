@@ -38,7 +38,7 @@ exports.getOrder = async (req, res, next) => {
   console.log({ id });
 
   try {
-    const order = await Order.findById(id);
+    const order = await Order.find({user : id});
     console.log({ order });
     if (!order) {
       res.status(404).send({
